@@ -10,7 +10,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.iostar.services.IUserService;
 import vn.iostar.services.impl.UserServiceImpl;
+<<<<<<< HEAD
 import vn.iostar.utils.Constant;
+=======
+>>>>>>> 33b0958cd7eea6bca183618b81c6e2cc4d85b5be
 
 @WebServlet(urlPatterns = { "/register" })
 public class RegisterController extends HttpServlet {
@@ -71,7 +74,11 @@ public class RegisterController extends HttpServlet {
 			// Registration failed due to a system error
 			alertMsg = "System error! Please try again later.";
 			req.setAttribute("alert", alertMsg);
+<<<<<<< HEAD
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
+=======
+			req.getRequestDispatcher("/views/register.jsp").forward(req, resp);
+>>>>>>> 33b0958cd7eea6bca183618b81c6e2cc4d85b5be
 		}
 	}
 }

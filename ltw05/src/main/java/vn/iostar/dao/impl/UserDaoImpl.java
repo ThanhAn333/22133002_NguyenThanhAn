@@ -198,6 +198,7 @@ public class UserDaoImpl implements IUserDao {
 	    return check;
 	}
 
+<<<<<<< HEAD
 	@Override
 	public int editProfile(UserModel user) {
 		int ketQua = 0;
@@ -219,4 +220,6 @@ public class UserDaoImpl implements IUserDao {
 	
 	
 
+=======
+>>>>>>> 33b0958cd7eea6bca183618b81c6e2cc4d85b5be
 }

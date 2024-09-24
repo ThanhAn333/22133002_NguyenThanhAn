@@ -20,7 +20,10 @@ public interface IUserDao {
 	
 	boolean updatePassword(String email, String password);
 
+<<<<<<< HEAD
 	int editProfile(UserModel user);
 
+=======
+>>>>>>> 33b0958cd7eea6bca183618b81c6e2cc4d85b5be
 	
 }
