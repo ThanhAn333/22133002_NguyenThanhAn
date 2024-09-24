@@ -35,7 +35,7 @@ public class ProfileController extends HttpServlet{
 		  UserModel user = (UserModel) req.getSession().getAttribute("account");
 	        if (user != null) {
 	            user = userDao.findById(user.getId());
-	            req.setAttribute("user", user);
+	            req.setAttribute("username", user);
 	        }
 	        req.getRequestDispatcher("/views/profile.jsp").forward(req, resp);
 	}
@@ -44,7 +44,7 @@ public class ProfileController extends HttpServlet{
 		try {
             UserModel user = (UserModel) req.getSession().getAttribute("account");
             if (user == null) {
-                resp.sendRedirect(req.getContextPath() + "/login");
+                req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
                 return;
             }
 

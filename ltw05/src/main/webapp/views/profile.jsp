@@ -32,7 +32,7 @@
                       <div class="alert alert-danger">${error}</div>
                 </c:if>
 				<c:choose>
-					<c:when test="${empty sessionScope.username}">
+					<c:when test="${empty sessionScope.account.username}">
 						<h3>Click <a href="${pageContext.request.contextPath}/login"><b>here</b></a> to login</h3>
 					</c:when>
 					<c:otherwise>
