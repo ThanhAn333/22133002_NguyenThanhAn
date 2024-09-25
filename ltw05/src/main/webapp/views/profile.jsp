@@ -50,7 +50,7 @@
 						</section>
 						<section>
 							<div class="form-group">
-								<label for="fullname">Họ tên</label> 
+								<label for="fullname">Full Name</label> 
 								<input type="text" name="fullname" id="fullname" class="form-control" value = "${requestScope.user.fullName}">
 							</div>
 						</section>
@@ -62,7 +62,7 @@
 						</section>
 						<section>
 							<div class="form-group">
-								<label for="phone">Số điện thoại</label> 
+								<label for="phone">Your Phone</label> 
 								<input type="text" name="phone" id="phone" class="form-control" value = "${requestScope.user.phone}">
 							</div>
 						</section>		

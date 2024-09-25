@@ -47,7 +47,6 @@
 			<version>3.0.1</version>
 		</dependency>
 
-<<<<<<< HEAD
 		<dependency>
 			<groupId>org.sitemesh</groupId>
 			<artifactId>sitemesh</artifactId>
@@ -55,8 +54,6 @@
 		</dependency>
 
 
-=======
->>>>>>> 33b0958cd7eea6bca183618b81c6e2cc4d85b5be
 
 	</dependencies>
 

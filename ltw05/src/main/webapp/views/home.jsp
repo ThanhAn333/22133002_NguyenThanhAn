@@ -390,7 +390,7 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-3">
                   <div class="product-main-image">
-                    <img src="../../assets/frontend/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
+                    <img src="${URL}assets/frontend/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
                   </div>
                   <div class="product-other-images">
                     <a href="#" class="active"><img alt="Berry Lace Dress" src="${URL}assets/frontend/pages/img/products/model3.jpg"></a>
