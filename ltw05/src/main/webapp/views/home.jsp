@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- BEGIN SLIDER -->
+	<!-- BEGIN SLIDER -->
 	<%@include file ="/common/slider.jsp" %>
-<!-- END SLIDER -->
+	<!-- END SLIDER -->
+	
 	<!-- BEGIN SALE PRODUCT & NEW ARRIVALS -->
 	<div class="row margin-bottom-40">
 	  <!-- BEGIN SALE PRODUCT -->
