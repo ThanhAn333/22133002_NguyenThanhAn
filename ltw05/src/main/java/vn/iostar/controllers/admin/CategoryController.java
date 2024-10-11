@@ -1,19 +1,25 @@
 package vn.iostar.controllers.admin;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
+
+import static vn.iostar.utils.Constant.*;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import vn.iostar.dao.ICategoryDao;
 import vn.iostar.dao.impl.CategoryDaoImpl;
 import vn.iostar.models.CategoryModel;
 import vn.iostar.services.ICategoryService;
 import vn.iostar.services.impl.CategoryServiceImpl;
-
+@MultipartConfig(fileSizeThreshold = 1024*1024, maxFileSize = 1024*1024,maxRequestSize = 1024*1024*5*5)
 @WebServlet(urlPatterns = {"/admin/categories", "/admin/category/add", "/admin/category/insert", "/admin/category/update","/admin/category/edit", "/admin/category/delete", "/admin/category/search"})
 public class CategoryController extends HttpServlet {
 
@@ -53,13 +59,38 @@ public class CategoryController extends HttpServlet {
 			String status = req.getParameter("status");
 			int statuss = Integer.parseInt(status);
 			
-			String images = "https://cdn.tgdd.vn/Products/Images/42/328450/oppo-a3x-do-1-750x500.jpg";
+CategoryModel category = new CategoryModel();
 			
-			CategoryModel category = new CategoryModel();
+			String fname = "";
+			String upLoad = DIR;
+			File upLoadDir = new File(upLoad);
+			if(!upLoadDir.exists()) {
+				upLoadDir.mkdir();
+			}
+			try {
+				Part part = req.getPart("images");
+				if(part.getSize()>0) {
+					String filename  = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+					int index = filename.lastIndexOf(".");
+					String ext = filename.substring(index+1);
+					fname = System.currentTimeMillis() + "." +ext;
+					
+					part.write(upLoad + "/" + filename);
+					
+					category.setImages(fname);
+					
+				}else {	
+					category.setImages("avatar.png");
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+			
 			
 			category.setCategoryname(categoryname);
 			category.setStatus(statuss);
-			category.setImages(images);
+			category.setImages(fname);
 			
 			cateService.insert(category);
 			
@@ -71,14 +102,39 @@ public class CategoryController extends HttpServlet {
 			String status = req.getParameter("status");
 			int statuss = Integer.parseInt(status);
 			
-			String images = "https://cdn.tgdd.vn/Products/Images/42/328450/oppo-a3x-do-1-750x500.jpg";
-				
 			CategoryModel category = new CategoryModel();
+			
+			String fname = "";
+			String upLoad = DIR;
+			File upLoadDir = new File(upLoad);
+			if(!upLoadDir.exists()) {
+				upLoadDir.mkdir();
+			}
+			try {
+				Part part = req.getPart("images");
+				if(part.getSize()>0) {
+					String filename  = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+					int index = filename.lastIndexOf(".");
+					String ext = filename.substring(index+1);
+					fname = System.currentTimeMillis() + "." +ext;
+					
+					part.write(upLoad + "/" + filename);
+					
+					category.setImages(fname);
+					
+				}else {
+					category.setImages("avatar.png");
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+				
+		
 			
 			category.setCategoryid(categoryid);
 			category.setCategoryname(categoryname);
 			category.setStatus(statuss);
-			category.setImages(images);
+			category.setImages(fname);
 			
 			cateService.update(category);
 			
