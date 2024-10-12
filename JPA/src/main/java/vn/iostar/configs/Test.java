@@ -11,7 +11,7 @@ public class Test {
 		Category cate = new Category();
 		cate.setCategoryname("Iphone");
 		cate.setImages("abc.jpg");
-		cate.setStatus(true);
+		cate.setStatus(1);
 		
 		try {
 			trans.begin();

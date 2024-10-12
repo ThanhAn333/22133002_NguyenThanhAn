@@ -36,7 +36,7 @@ public class Category implements Serializable{
 	private String images;
 	
 	@Column(name="Status")
-	private boolean status;
+	private int status;
 	
 	@OneToMany(mappedBy="category")
 	private List<Video> video;
@@ -69,11 +69,11 @@ public class Category implements Serializable{
 		this.images = images;
 	}
 
-	public boolean isStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
@@ -84,6 +84,8 @@ public class Category implements Serializable{
 	public void setVideo(List<Video> video) {
 		this.video = video;
 	}
+
+	
 	
 	
 }
