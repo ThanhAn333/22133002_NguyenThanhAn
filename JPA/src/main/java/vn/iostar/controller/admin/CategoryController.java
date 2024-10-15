@@ -20,7 +20,7 @@ import vn.iostar.entity.Category;
 import vn.iostar.service.ICategoryService;
 import vn.iostar.service.impl.CategoryServiceImpl;
 @MultipartConfig(fileSizeThreshold = 1024*1024, maxFileSize = 1024*1024,maxRequestSize = 1024*1024*5*5)
-@WebServlet(urlPatterns = {"/admin/categories", "/admin/category/add", "/admin/category/insert", "/admin/category/update","/admin/category/edit", "/admin/category/delete", "/admin/category/search"})
+@WebServlet(urlPatterns = {"/admin/categories", "/admin/category/add", "/admin/category/insert", "/admin/category/update","/admin/category/remove","/admin/category/edit", "/admin/category/delete", "/admin/category/search"})
 public class CategoryController extends HttpServlet {
 
 	
@@ -46,6 +46,12 @@ public class CategoryController extends HttpServlet {
 			
 			req.setAttribute("cate",catgory);
 			req.getRequestDispatcher("/views/admin/category-edit.jsp").forward(req, resp);
+		}else if(url.contains("delete")) {
+			int id =Integer.parseInt(req.getParameter("id"));
+			Category catgory = cateService.findById(id);
+			
+			req.setAttribute("cate",catgory);
+			req.getRequestDispatcher("/views/admin/category-delete.jsp").forward(req, resp);
 		}
 	}
 	
@@ -137,14 +143,14 @@ public class CategoryController extends HttpServlet {
 			
 			resp.sendRedirect(req.getContextPath() + "/admin/categories");
 		}else if(url.contains("delete")) {
-			int categoryid = Integer.parseInt(req.getParameter("categoryId"));
-			try {
-				cateService.delete(categoryid);
-				resp.sendRedirect(req.getContextPath() + "/admin/categories");
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-			}
+			int categoryId = Integer.parseInt(req.getParameter("categoryId"));
+		    try {
+		        cateService.delete(categoryId);
+		        resp.sendRedirect(req.getContextPath() + "/admin/categories?message=Category deleted successfully");
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        resp.sendRedirect(req.getContextPath() + "/admin/categories?error=Unable to delete category");
+		    }
 		}
 	}
 }

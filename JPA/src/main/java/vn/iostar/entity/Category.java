@@ -21,6 +21,7 @@ public class Category implements Serializable{
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 8803536966776451311L;
 	
 	

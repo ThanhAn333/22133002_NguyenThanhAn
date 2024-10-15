@@ -28,7 +28,7 @@ public class Video implements Serializable{
 	private int videoId;
 	
 	@Column(name="Active")
-	private boolean active;
+	private int active;
 	
 	@Column(name="Description", columnDefinition = "NVARCHAR(MAX) NULL")
 	private String description;
@@ -63,12 +63,12 @@ public class Video implements Serializable{
 	}
 
 
-	public boolean isActive() {
+	public int getActive() {
 		return active;
 	}
 
 
-	public void setActive(boolean active) {
+	public void setActive(int active) {
 		this.active = active;
 	}
 

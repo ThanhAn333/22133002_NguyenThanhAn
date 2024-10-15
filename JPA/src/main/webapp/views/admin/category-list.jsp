@@ -17,15 +17,12 @@
 	<c:forEach items="${listcate}" var="cate" varStatus="STT">
 		<tr>
 			<td>${STT.index+1 }</td>
-			<td><c:if
-					test="${cate.images != null && cate.images.length() >= 5 && cate.images.substring(0, 5) != 'https' }">
+			<td><c:if test="${cate.images.substring(0, 5)!= 'https' }">
 					<c:url value="/image?fname=${cate.images }" var="imgUrl"></c:url>
-				</c:if> <c:if
-					test="${cate.images != null && cate.images.length() >= 5 && cate.images.substring(0, 5) == 'https' }">
+				</c:if> <c:if test="${cate.images.substring(0, 5)=='https' }">
 					<c:url value="${cate.images }" var="imgUrl"></c:url>
-				</c:if> <img
-				src="${pageContext.request.contextPath}/image?fname=${cate.images }"
-				height="150" width="200" /></td>
+				</c:if> <img height="150" width="200" src="${imgUrl}" /></td>
+
 			<td>${cate.categoryId }</td>
 			<td>${cate.categoryname }</td>
 			<td><c:if test="${cate.status == 1 }">
