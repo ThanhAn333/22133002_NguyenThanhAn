@@ -7,12 +7,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="users")
-@NamedQuery(name="User.findAll", query="SELECT c FROM User c")
+@NamedQueries({
+	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+    @NamedQuery(name="User.findByUsername", query="SELECT u FROM User u WHERE u.username = :username"),
+    @NamedQuery(name="User.findByEmail", query="SELECT u FROM User u WHERE u.email = :email"),
+    @NamedQuery(name="User.findByPhone", query="SELECT u FROM User u WHERE u.phone = :phone")
+})
 public class User implements Serializable{
 	/**
 	 * 
