@@ -17,7 +17,7 @@ public class DBConnectionSQL {
 
 		// Build connection string
 		String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
-
+		
 		// Return connection object
 		return DriverManager.getConnection(url, userID, password);
 	}
